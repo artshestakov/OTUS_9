@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.12)
 project(bulk)
 
 set (CMAKE_CXX_STANDARD 17)
+find_package(Threads)
 
 add_executable(bulk
     src/main.cpp
@@ -16,6 +17,8 @@ add_executable(bulk
 target_include_directories(bulk
     PRIVATE "${CMAKE_BINARY_DIR}"
 )
+
+target_link_libraries(bulk ${CMAKE_THREAD_LIBS_INIT})
 
 install(TARGETS bulk RUNTIME DESTINATION bin)
 set(CPACK_GENERATOR DEB)
