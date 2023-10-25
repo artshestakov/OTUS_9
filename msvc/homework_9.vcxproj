@@ -162,12 +162,14 @@
     <ClCompile Include="..\src\cmd.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\writers.cpp" />
+    <ClCompile Include="..\src\writer_thread.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\cmd.h" />
     <ClInclude Include="..\src\observer.h" />
     <ClInclude Include="..\src\stdafx.h" />
     <ClInclude Include="..\src\writers.h" />
+    <ClInclude Include="..\src\writer_thread.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

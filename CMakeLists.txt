@@ -8,6 +8,7 @@ add_executable(bulk
     src/main.cpp
     src/cmd.cpp
     src/writers.cpp
+    src/writer_thread.cpp
     src/observer.h
     src/stdafx.h
 )

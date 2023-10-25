@@ -1,4 +1,5 @@
 #include "writers.h"
+#include "writer_thread.h"
 //-----------------------------------------------------------------------------
 WriterFile::WriterFile(Observable* c)
 {
@@ -7,18 +8,7 @@ WriterFile::WriterFile(Observable* c)
 //-----------------------------------------------------------------------------
 void WriterFile::Update(const std::string& s, const std::chrono::system_clock::time_point& t)
 {
-    auto time_sec = std::chrono::duration_cast<std::chrono::seconds>(t.time_since_epoch());
-
-    std::string file_name = "bulk" + std::to_string(time_sec.count()) + ".log";
-    std::ofstream file(file_name);
-    if (!file.is_open())
-    {
-        std::cout << "Can't write file " + file_name;
-        return;
-    }
-
-    file << s;
-    file.close();
+    WriterThread::Instance().Add(s, t);
 }
 //-----------------------------------------------------------------------------
 //-----------------------------------------------------------------------------
@@ -31,6 +21,12 @@ WriterConsole::WriterConsole(Observable* c)
 void WriterConsole::Update(const std::string& s, const std::chrono::system_clock::time_point& t)
 {
     (void)t;
-    std::cout << s << std::endl;
+
+    static auto worker = [](const std::string& s)
+    {
+        std::cout << s << std::endl;
+    };
+
+    (void)std::async(std::launch::async, worker, s);
 }
 //-----------------------------------------------------------------------------

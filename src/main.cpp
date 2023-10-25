@@ -1,7 +1,10 @@
 #include "cmd.h"
+#include "writer_thread.h"
 //-----------------------------------------------------------------------------
 int main(int argc, char** argv)
 {
+    WriterThread::Instance().Start(2);
+
     cmd c;
 
     WriterConsole writer_console(&c);
