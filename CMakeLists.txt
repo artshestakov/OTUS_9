@@ -3,7 +3,9 @@ cmake_minimum_required(VERSION 3.12)
 project(bulk)
 
 set (CMAKE_CXX_STANDARD 17)
-find_package(Threads)
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
+
 
 IF (WIN32)
     set (CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
@@ -29,7 +31,7 @@ target_include_directories(bulk PRIVATE
     ${CMAKE_BINARY_DIR}/../src/libasync
 )
 
-target_link_libraries(bulk async)
+target_link_libraries(bulk PRIVATE Threads::Threads async)
 
 install(TARGETS bulk RUNTIME DESTINATION bin)
 set(CPACK_GENERATOR DEB)
