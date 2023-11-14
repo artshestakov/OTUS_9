@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\src\cmd.cpp" />
-    <ClCompile Include="..\src\main.cpp" />
-    <ClCompile Include="..\src\writers.cpp" />
-    <ClCompile Include="..\src\writer_thread.cpp" />
+    <ClCompile Include="..\src\bulk\cmd.cpp" />
+    <ClCompile Include="..\src\bulk\main.cpp" />
+    <ClCompile Include="..\src\bulk\writer_thread.cpp" />
+    <ClCompile Include="..\src\bulk\writers.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\cmd.h" />
-    <ClInclude Include="..\src\stdafx.h" />
-    <ClInclude Include="..\src\observer.h" />
-    <ClInclude Include="..\src\writers.h" />
-    <ClInclude Include="..\src\writer_thread.h" />
+    <ClInclude Include="..\src\bulk\cmd.h" />
+    <ClInclude Include="..\src\bulk\observer.h" />
+    <ClInclude Include="..\src\bulk\stdafx.h" />
+    <ClInclude Include="..\src\bulk\writer_thread.h" />
+    <ClInclude Include="..\src\bulk\writers.h" />
   </ItemGroup>
 </Project>
