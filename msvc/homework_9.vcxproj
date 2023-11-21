@@ -19,17 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\bulk\cmd.cpp" />
     <ClCompile Include="..\src\bulk\main.cpp" />
-    <ClCompile Include="..\src\bulk\writers.cpp" />
-    <ClCompile Include="..\src\bulk\writer_thread.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\src\bulk\cmd.h" />
-    <ClInclude Include="..\src\bulk\observer.h" />
-    <ClInclude Include="..\src\bulk\stdafx.h" />
-    <ClInclude Include="..\src\bulk\writers.h" />
-    <ClInclude Include="..\src\bulk\writer_thread.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -86,25 +76,25 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)..\Bin\$(Configuration)-$(Platform)\</OutDir>
-    <IntDir>$(SolutionDir)Build\$(Configuration)-$(Platform)\</IntDir>
+    <IntDir>$(SolutionDir)Build\$(ProjectName)-$(Configuration)-$(Platform)\</IntDir>
     <TargetName>bulk</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)..\Bin\$(Configuration)-$(Platform)\</OutDir>
-    <IntDir>$(SolutionDir)Build\$(Configuration)-$(Platform)\</IntDir>
+    <IntDir>$(SolutionDir)Build\$(ProjectName)-$(Configuration)-$(Platform)\</IntDir>
     <TargetName>bulk</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)..\Bin\$(Configuration)-$(Platform)\</OutDir>
-    <IntDir>$(SolutionDir)Build\$(Configuration)-$(Platform)\</IntDir>
+    <IntDir>$(SolutionDir)Build\$(ProjectName)-$(Configuration)-$(Platform)\</IntDir>
     <TargetName>bulk</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)..\Bin\$(Configuration)-$(Platform)\</OutDir>
-    <IntDir>$(SolutionDir)Build\$(Configuration)-$(Platform)\</IntDir>
+    <IntDir>$(SolutionDir)Build\$(ProjectName)-$(Configuration)-$(Platform)\</IntDir>
     <TargetName>bulk</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
