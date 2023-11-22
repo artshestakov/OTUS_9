@@ -4,7 +4,7 @@
 //-----------------------------------------------------------------------------
 int main(int argc, char** argv)
 {
-    size_t bulk = 5;
+    unsigned int bulk = 5;
 
     async::handle_t h1 = async::connect(bulk);
     async::handle_t h2 = async::connect(bulk);

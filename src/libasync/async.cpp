@@ -4,7 +4,7 @@
 //-----------------------------------------------------------------------------
 struct AsyncHandle
 {
-    AsyncHandle(size_t bulk)
+    AsyncHandle(unsigned int bulk)
         : CMD(bulk),
         OutConsole(&CMD),
         OutFile(&CMD)
@@ -19,7 +19,7 @@ private:
     WriterFile OutFile;
 };
 //-----------------------------------------------------------------------------
-async::handle_t async::connect(size_t bulk)
+async::handle_t async::connect(unsigned int bulk)
 {
     //Запускаем потоки только если они ещё не были запущены
     if (!WriterThread::Instance().IsRun())

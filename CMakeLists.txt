@@ -14,16 +14,16 @@ ENDIF()
 
 add_library(async SHARED
     src/libasync/async.cpp
-    src/libasync/async.h
+    src/libasync/cmd.cpp
+    src/libasync/utils.cpp
+    src/libasync/writer_thread.cpp
+    src/libasync/writers.cpp
+    src/libasync/observer.h
+    src/libasync/stdafx.h
 )
 
 add_executable(bulk
     src/bulk/main.cpp
-    src/bulk/cmd.cpp
-    src/bulk/writers.cpp
-    src/bulk/writer_thread.cpp
-    src/bulk/observer.h
-    src/bulk/stdafx.h
 )
 
 target_include_directories(bulk PRIVATE
