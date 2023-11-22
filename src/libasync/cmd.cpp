@@ -1,10 +1,14 @@
 #include "cmd.h"
+#include "utils.h"
 //-----------------------------------------------------------------------------
-cmd::cmd()
-    : m_BlockCount(0),
+cmd::cmd(unsigned int block_count)
+    : m_BlockCount(block_count),
     m_BlockDepth(0)
 {
-
+    if (block_count > 0)
+    {
+        SetBlockCount(block_count);
+    }
 }
 //-----------------------------------------------------------------------------
 cmd::~cmd()
@@ -49,9 +53,7 @@ bool cmd::ParseArgument(int argc, char** argv)
         return false;
     }
 
-    m_BlockCount = (unsigned int)n;
-    m_Vector.reserve(m_BlockCount);
-
+    SetBlockCount((unsigned int)n);
     return true;
 }
 //-----------------------------------------------------------------------------
@@ -62,7 +64,16 @@ void cmd::ReadConsole()
     std::string command;
     while (std::getline(std::cin, command))
     {
-        if (command == "{")
+        ReadConsole(command);
+    }
+}
+//-----------------------------------------------------------------------------
+void cmd::ReadConsole(const std::string& command)
+{
+    auto vec = utils::split_string(command, '\n');
+    for (const std::string& cm : vec)
+    {
+        if (cm == "{")
         {
             if (!m_Vector.empty() && m_BlockDepth == 0)
             {
@@ -70,34 +81,34 @@ void cmd::ReadConsole()
             }
 
             ++m_BlockDepth;
-            continue; //Не допускаем лишней проверки внизу цикла
+            return; //Не допускаем лишней проверки внизу цикла
         }
-        else if (command == "}")
+        else if (cm == "}")
         {
             --m_BlockDepth;
             if (m_BlockDepth == 0)
             {
                 PrintAndClearVector();
             }
-            continue; //Не допускаем лишней проверки внизу цикла
+            return; //Не допускаем лишней проверки внизу цикла
         }
-        else if (m_BlockDepth > 0 && command.empty())
+        else if (m_BlockDepth > 0 && cm.empty())
         {
             PrintAndClearVector();
             m_BlockDepth = 0;
-            continue; //Не допускаем лишней проверки внизу цикла
+            return; //Не допускаем лишней проверки внизу цикла
         }
-        else if (command == "\\q") //Не забываем про корректный выход из программы
+        else if (cm == "\\q") //Не забываем про корректный выход из программы
         {
             std::cout << "The program will be closed" << std::endl;
             break;
         }
         else //Считаем что пришла стандартная команда
         {
-            AddCommand(command);
+            AddCommand(cm);
         }
 
-        if (m_BlockDepth == 0 && (m_Vector.size() == m_BlockCount || command.empty()))
+        if (m_BlockDepth == 0 && (m_Vector.size() == m_BlockCount || cm.empty()))
         {
             PrintAndClearVector();
         }
@@ -145,5 +156,11 @@ void cmd::Notify(const std::string& s)
     {
         subscriber->Update(s, m_Time.value());
     }
+}
+//-----------------------------------------------------------------------------
+void cmd::SetBlockCount(unsigned int block_count)
+{
+    m_BlockCount = block_count;
+    m_Vector.reserve(m_BlockCount);
 }
 //-----------------------------------------------------------------------------

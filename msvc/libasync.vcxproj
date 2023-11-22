@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="..\src\libasync\async.cpp" />
     <ClCompile Include="..\src\libasync\cmd.cpp" />
+    <ClCompile Include="..\src\libasync\utils.cpp" />
     <ClCompile Include="..\src\libasync\writers.cpp" />
     <ClCompile Include="..\src\libasync\writer_thread.cpp" />
   </ItemGroup>
@@ -29,6 +30,7 @@
     <ClInclude Include="..\src\libasync\cmd.h" />
     <ClInclude Include="..\src\libasync\observer.h" />
     <ClInclude Include="..\src\libasync\stdafx.h" />
+    <ClInclude Include="..\src\libasync\utils.h" />
     <ClInclude Include="..\src\libasync\writers.h" />
     <ClInclude Include="..\src\libasync\writer_thread.h" />
   </ItemGroup>

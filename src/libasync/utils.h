@@ -1,13 +1,9 @@
 #pragma once
 //-----------------------------------------------------------------------------
-#include <cstddef>
+#include "stdafx.h"
 //-----------------------------------------------------------------------------
-namespace async
+namespace utils
 {
-    using handle_t = void*;
-
-    handle_t connect(size_t bulk);
-    void receive(handle_t handle, const char* data, size_t size);
-    void disconnect(handle_t handle);
+    std::vector<std::string> split_string(const std::string& s, char sep);
 }
 //-----------------------------------------------------------------------------

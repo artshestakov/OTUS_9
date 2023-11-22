@@ -14,6 +14,7 @@ private:
 public:
     static WriterThread& Instance();
 
+    bool IsRun() const;
     void Start(unsigned int thread_count);
     void Add(const std::string& s, const std::chrono::system_clock::time_point& t);
 

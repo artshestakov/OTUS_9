@@ -17,8 +17,18 @@ WriterThread& WriterThread::Instance()
     return writer_thread;
 }
 //-----------------------------------------------------------------------------
+bool WriterThread::IsRun() const
+{
+    return m_IsRun;
+}
+//-----------------------------------------------------------------------------
 void WriterThread::Start(unsigned int thread_count)
 {
+    if (m_IsRun)
+    {
+        return;
+    }
+
     for (unsigned int i = 0; i < thread_count; ++i)
     {
         std::thread(&WriterThread::Worker, this).detach();

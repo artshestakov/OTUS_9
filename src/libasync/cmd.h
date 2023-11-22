@@ -6,7 +6,7 @@
 class cmd : public Observable
 {
 public:
-    cmd();
+    cmd(unsigned int block_count = 0);
     ~cmd();
 
     //! Подписка на события
@@ -26,6 +26,8 @@ public:
     //! Режим чтения данных из консоли
     void ReadConsole();
 
+    void ReadConsole(const std::string& command);
+
 private:
     //! Добавить команду в память
     //! \param command команда
@@ -37,6 +39,10 @@ private:
     //! Издать сигнал
     //! \param s строка
     void Notify(const std::string& s);
+
+    //! Изменяет размер блока
+    //! \param block_count размер блока
+    void SetBlockCount(unsigned int block_count);
 
 private:
     std::string m_ErrorString;

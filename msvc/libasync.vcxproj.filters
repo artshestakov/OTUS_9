@@ -5,6 +5,7 @@
     <ClCompile Include="..\src\libasync\cmd.cpp" />
     <ClCompile Include="..\src\libasync\writer_thread.cpp" />
     <ClCompile Include="..\src\libasync\writers.cpp" />
+    <ClCompile Include="..\src\libasync\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\libasync\async.h" />
@@ -13,5 +14,6 @@
     <ClInclude Include="..\src\libasync\stdafx.h" />
     <ClInclude Include="..\src\libasync\writer_thread.h" />
     <ClInclude Include="..\src\libasync\writers.h" />
+    <ClInclude Include="..\src\libasync\utils.h" />
   </ItemGroup>
 </Project>
